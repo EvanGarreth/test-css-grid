@@ -1,6 +1,6 @@
-<ng-container *ngIf="appData$ | async as appData; else error">
-  <ng-container [ngSwitch]="appData.decision.status">
-      <app-approved *ngSwitchCase="status.Approved" [decision]="appData.decision" [primaryApplicant]="appData.primaryApplicant"></app-approved>
+<ng-container *ngIf="decision$ | async as decision; else error">
+  <ng-container [ngSwitch]="decision.status">
+      <app-approved *ngSwitchCase="status.Approved"></app-approved>
       <app-denied *ngSwitchCase="status.Declined"></app-denied>
       <app-error *ngSwitchDefault></app-error>
   </ng-container>

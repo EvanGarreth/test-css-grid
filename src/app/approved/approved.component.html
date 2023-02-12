@@ -1,9 +1,0 @@
-<section>
-  <h1>Congratulations {{primaryApplicant?.name}}</h1>
-  <div *ngIf="loanDetail$ | async as loanDetail">
-    <p>Term: {{loanDetail.Term}} </p>
-    <p>Term: {{loanDetail.APR}} </p>
-    <p>Term: {{loanDetail.Payment}} </p>
-  </div>
-  <input type="range" min="0" [max]="decision.LoanDetails.length - 1" step="1" [value]="initialIndex" (change)="selectedLoanChange($event)" />
-</section>

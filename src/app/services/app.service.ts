@@ -17,13 +17,7 @@ export class AppService {
   loanApp$ = this.loanAppSource.asObservable();
 
   primaryApplicant$ = this.loanApp$.pipe(
-    map((loanApp) => {
-      const primary = loanApp.Applicants.find((applicant) => applicant.isPrimary)!;
-      /*if (!primary) {
-        throwError(() => 'recieved a loanApp without a primary applicant');
-      }*/
-      return primary;
-    })
+    map((loanApp) => loanApp.Applicants.find((applicant) => applicant.isPrimary)!)
   );
 
   constructor() {}

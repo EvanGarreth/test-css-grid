@@ -1,0 +1,9 @@
+<section *ngIf="appData$ | async as appData">
+  <h1>Congratulations {{appData.primaryApplicant.name}}</h1>
+  <div>
+    <p>Term: {{appData.selectedDetail.Term}} </p>
+    <p>Term: {{appData.selectedDetail.APR}} </p>
+    <p>Term: {{appData.selectedDetail.Payment}} </p>
+  </div>
+  <input type="range" min="0" [max]="appData.decision.LoanDetails.length - 1" step="1" [value]="defaultSelection" (change)="selectedLoanChange($event)" />
+</section>

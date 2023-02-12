@@ -12,10 +12,6 @@ export class DecisionGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.appService.hasDecision$.pipe(tap(
-      (value) => {
-        console.log(value);
-        return value})
-    );
+    return this.appService.hasDecision$;
   }
 }

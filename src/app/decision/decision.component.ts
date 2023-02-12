@@ -11,14 +11,7 @@ import { AppService } from '../services/app.service';
 export class DecisionComponent {
   status = DecisionStatus;
 
-  primaryApplicant$ = this.appService.primaryApplicant$;
   decision$ = this.appService.decision$;
-
-  appData$ = combineLatest([
-    this.primaryApplicant$, this.decision$
-  ]).pipe(
-    map(([primaryApplicant, decision]) => ({ primaryApplicant, decision })),
-  );
 
   constructor(public readonly appService: AppService) {}
 }
