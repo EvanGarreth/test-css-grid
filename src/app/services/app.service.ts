@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, ReplaySubject, throwError } from 'rxjs';
+import { BehaviorSubject, map, ReplaySubject, throwError } from 'rxjs';
 import { Decision } from '../models/decision';
 import { LoanApp } from '../models/loanapp';
 
@@ -9,6 +9,9 @@ import { LoanApp } from '../models/loanapp';
 export class AppService {
   private decisionSource = new ReplaySubject<Decision>(1);
   decision$ = this.decisionSource.asObservable();
+
+  private hasDecisionSource = new BehaviorSubject(false);
+  hasDecision$ = this.hasDecisionSource.asObservable();
 
   private loanAppSource = new ReplaySubject<LoanApp>(1);
   loanApp$ = this.loanAppSource.asObservable();
@@ -30,6 +33,7 @@ export class AppService {
     const decision = new Decision();
 
     this.loanAppSource.next(loan);
+    this.hasDecisionSource.next(true);
     this.decisionSource.next(decision);
   }
 }

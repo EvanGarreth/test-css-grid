@@ -5,16 +5,22 @@ import { AppComponent } from './app.component';
 import { ApprovedComponent } from './approved/approved.component';
 import { ErrorComponent } from './error/error.component';
 import { DeniedComponent } from './denied/denied.component';
+import { DecisionComponent } from './decision/decision.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApprovedComponent,
     ErrorComponent,
-    DeniedComponent
+    DeniedComponent,
+    DecisionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

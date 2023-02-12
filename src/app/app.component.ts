@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { combineLatest, map, tap } from 'rxjs';
 import { DecisionStatus } from './models/decision';
 import { AppService } from './services/app.service';
@@ -11,20 +12,6 @@ import { AppService } from './services/app.service';
 })
 export class AppComponent {
   title = 'my-app';
-  status = DecisionStatus;
 
-  primaryApplicant$ = this.appService.primaryApplicant$;
-  decision$ = this.appService.decision$;
-
-  appData$ = combineLatest([
-    this.primaryApplicant$, this.decision$
-  ]).pipe(
-    map(([primaryApplicant, decision]) => ({ primaryApplicant, decision })),
-  );
-
-  constructor(public readonly appService: AppService) {}
-
-  public fakeRequest() {
-    this.appService.fakeRequest();
-  }
+  constructor() {}
 }
