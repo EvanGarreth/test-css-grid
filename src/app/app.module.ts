@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { ApprovedComponent } from './approved/approved.component';
+import { ErrorComponent } from './error/error.component';
+import { DeniedComponent } from './denied/denied.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent
+    ApprovedComponent,
+    ErrorComponent,
+    DeniedComponent
   ],
   imports: [
     BrowserModule,

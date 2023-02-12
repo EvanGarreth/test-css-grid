@@ -1,12 +1,16 @@
-<nav>
-  <section id="static">
-    <div class="logo">Logo</div>
-    <button id="login-button">Log In</button>
-  </section>
-  <section id="dropdown-navigation">
-    <login-form [layout]="'navigation'"></login-form>
-  </section>
-</nav>
 <section>
-  <login-form [layout]="'body'"></login-form>
+  <ng-container *ngIf="appData$ | async as appData; else error">
+    <ng-container [ngSwitch]="appData.decision.status">
+        <app-approved *ngSwitchCase="status.Approved" [decision]="appData.decision" [primaryApplicant]="appData.primaryApplicant"></app-approved>
+        <app-denied *ngSwitchCase="status.Declined"></app-denied>
+        <app-error *ngSwitchDefault></app-error>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #error>
+    <app-error></app-error>
+    <p>(no appData @ app.component)</p>
+  </ng-template>
+
+  <button (click)="fakeRequest()">get decision</button>
 </section>
